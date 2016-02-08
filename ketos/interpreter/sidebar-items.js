@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Interpreter","Provides a context in which to compile and execute code."]]});

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `FormatError` enum in crate `ketos`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, FormatError">
+
+    <title>ketos::string_fmt::FormatError - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>ketos</a>::<wbr><a href='index.html'>string_fmt</a></p><script>window.sidebarCurrent = {name: 'FormatError', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>ketos</a>::<wbr><a href='index.html'>string_fmt</a>::<wbr><a class='enum' href=''>FormatError</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-9102' class='srclink' href='../../src/ketos/string_fmt.rs.html#22-69' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum FormatError {
+    Error(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    ExtraFields,
+    FieldOverflow,
+    FieldTypeError {
+        expected: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        found: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+    },
+    IncompleteDirective,
+    IncorrectCloseDelim(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.char.html'>char</a>),
+    IncorrectFlags,
+    InfiniteLoop,
+    InsufficientArguments,
+    IntegerOverflow,
+    InvalidFlags,
+    InvalidRadix(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    MisplacedDirective,
+    MissingCloseDelim(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.char.html'>char</a>),
+    MissingBranch,
+    ExtraBranch,
+    TypeError {
+        expected: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        found: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+    },
+    UnrecognizedDirective(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.char.html'>char</a>),
+}</pre><div class='docblock'><p>Represents an error in formatting a string.</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Error'><code>Error</code></td><td><div class='docblock'><p>Error message</p>
+</div></td></tr><tr><td id='variant.ExtraFields'><code>ExtraFields</code></td><td><div class='docblock'><p>Extraneous fields to directive</p>
+</div></td></tr><tr><td id='variant.FieldOverflow'><code>FieldOverflow</code></td><td><div class='docblock'><p>Field value exceeded expected range</p>
+</div></td></tr><tr><td id='variant.FieldTypeError'><code>FieldTypeError</code></td><td><div class='docblock'><p>Wrong type to field value</p>
+</div><h3 class='fields'>Fields</h3>
+
+                                              <table><tr><td id='variant.FieldTypeError.field.expected'><code>expected</code></td><td><div class='docblock'><p>Type of value expected</p>
+</div></td></tr><tr><td id='variant.FieldTypeError.field.found'><code>found</code></td><td><div class='docblock'><p>Type found</p>
+</div></td></tr></table></td></tr><tr><td id='variant.IncompleteDirective'><code>IncompleteDirective</code></td><td><div class='docblock'><p>End of format string reached before directive completed</p>
+</div></td></tr><tr><td id='variant.IncorrectCloseDelim'><code>IncorrectCloseDelim</code></td><td><div class='docblock'><p>Group-closing directive encountered without matching opener</p>
+</div></td></tr><tr><td id='variant.IncorrectFlags'><code>IncorrectFlags</code></td><td><div class='docblock'><p>Incorrect flags given to directive</p>
+</div></td></tr><tr><td id='variant.InfiniteLoop'><code>InfiniteLoop</code></td><td><div class='docblock'><p>Infinite loop detected in iteration directive <code>~{...~}</code></p>
+</div></td></tr><tr><td id='variant.InsufficientArguments'><code>InsufficientArguments</code></td><td><div class='docblock'><p>Insufficient arguments to format string</p>
+</div></td></tr><tr><td id='variant.IntegerOverflow'><code>IntegerOverflow</code></td><td><div class='docblock'><p>Overflow converting a value to <code>Integer</code></p>
+</div></td></tr><tr><td id='variant.InvalidFlags'><code>InvalidFlags</code></td><td><div class='docblock'><p>Invalid flags specifier</p>
+</div></td></tr><tr><td id='variant.InvalidRadix'><code>InvalidRadix</code></td><td><div class='docblock'><p>Invalid radix to <code>~r</code> directive</p>
+</div></td></tr><tr><td id='variant.MisplacedDirective'><code>MisplacedDirective</code></td><td><div class='docblock'><p>Directive encountered where it is not expected</p>
+</div></td></tr><tr><td id='variant.MissingCloseDelim'><code>MissingCloseDelim</code></td><td><div class='docblock'><p>End of format string reached with open grouping directive</p>
+</div></td></tr><tr><td id='variant.MissingBranch'><code>MissingBranch</code></td><td><div class='docblock'><p>Missing required branch within a conditional directive</p>
+</div></td></tr><tr><td id='variant.ExtraBranch'><code>ExtraBranch</code></td><td><div class='docblock'><p>End of branch directive found where end of conditional was expected</p>
+</div></td></tr><tr><td id='variant.TypeError'><code>TypeError</code></td><td><div class='docblock'><p>Argument value of incorrect type received</p>
+</div><h3 class='fields'>Fields</h3>
+
+                                              <table><tr><td id='variant.TypeError.field.expected'><code>expected</code></td><td><div class='docblock'><p>Expected value type</p>
+</div></td></tr><tr><td id='variant.TypeError.field.found'><code>found</code></td><td><div class='docblock'><p>Type found</p>
+</div></td></tr></table></td></tr><tr><td id='variant.UnrecognizedDirective'><code>UnrecognizedDirective</code></td><td><div class='docblock'><p>Unrecognized directive character</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'><h4 id='method.expected' class='method'><code>fn <a href='#method.expected' class='fnname'>expected</a>(ty: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, v: &amp;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>) -&gt; <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h4>
+<div class='docblock'><p>Convenience function to return a <code>TypeError</code> value when <code>expected</code>
+type is expected, but some other type of value is found.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "ketos";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

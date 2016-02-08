@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CodeBlock` struct in crate `ketos`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CodeBlock">
+
+    <title>ketos::bytecode::CodeBlock - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>ketos</a>::<wbr><a href='index.html'>bytecode</a></p><script>window.sidebarCurrent = {name: 'CodeBlock', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>ketos</a>::<wbr><a href='index.html'>bytecode</a>::<wbr><a class='struct' href=''>CodeBlock</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-1191' class='srclink' href='../../src/ketos/bytecode.rs.html#793-802' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CodeBlock {
+    pub jump: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='enum' href='../../ketos/bytecode/enum.JumpInstruction.html' title='ketos::bytecode::JumpInstruction'>JumpInstruction</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</a>&gt;,
+    pub next: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>&gt;,
+    // some fields omitted
+}</pre><div class='docblock'><p>Contains a series of bytecode instructions</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.jump'><code>jump</code></td><td><div class='docblock'><p>Jump instruction added to the end of the block</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.next'><code>next</code></td><td><div class='docblock'><p>Refers to the block that immediately follows this block</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../ketos/bytecode/struct.CodeBlock.html' title='ketos::bytecode::CodeBlock'>CodeBlock</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../ketos/bytecode/struct.CodeBlock.html' title='ketos::bytecode::CodeBlock'>CodeBlock</a></code></h4>
+<div class='docblock'><p>Creates an empty <code>CodeBlock</code> with a small reserved buffer.</p>
+</div><h4 id='method.empty' class='method'><code>fn <a href='#method.empty' class='fnname'>empty</a>() -&gt; <a class='struct' href='../../ketos/bytecode/struct.CodeBlock.html' title='ketos::bytecode::CodeBlock'>CodeBlock</a></code></h4>
+<div class='docblock'><p>Creates an empty <code>CodeBlock</code> without reserving data.</p>
+</div><h4 id='method.calculate_size' class='method'><code>fn <a href='#method.calculate_size' class='fnname'>calculate_size</a>(&amp;self, short: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>Returns the final size of the block, including all encoded instructions
+and final jump instruction.
+<code>short</code> indicates whether jump instruction offsets are encoded in
+short format.</p>
+
+<p>If there is an unencoded instruction, its size is estimated.</p>
+</div><h4 id='method.len' class='method'><code>fn <a href='#method.len' class='fnname'>len</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>Returns the size of all encoded instructions.</p>
+</div><h4 id='method.get_bytes' class='method'><code>fn <a href='#method.get_bytes' class='fnname'>get_bytes</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Returns encoded bytecode data.</p>
+
+<p><code>flush</code> should be called first to ensure all instructions are encoded.</p>
+</div><h4 id='method.is_mostly_empty' class='method'><code>fn <a href='#method.is_mostly_empty' class='fnname'>is_mostly_empty</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns whether the code block is mostly empty, permitting the compiler
+to prune it in some cases.</p>
+</div><h4 id='method.set_next' class='method'><code>fn <a href='#method.set_next' class='fnname'>set_next</a>(&amp;mut self, block: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></h4>
+<div class='docblock'><p>Sets the block which will immediately follow this block.</p>
+
+<p>May only be called once.</p>
+</div><h4 id='method.jump_to' class='method'><code>fn <a href='#method.jump_to' class='fnname'>jump_to</a>(&amp;mut self, instr: <a class='enum' href='../../ketos/bytecode/enum.JumpInstruction.html' title='ketos::bytecode::JumpInstruction'>JumpInstruction</a>, block: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></h4>
+<div class='docblock'><p>Sets the jump instruction at the end of the block.</p>
+
+<p>May only be called once.</p>
+</div><h4 id='method.write_jump' class='method'><code>fn <a href='#method.write_jump' class='fnname'>write_jump</a>(&amp;mut self, label: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, short: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../../ketos/compile/enum.CompileError.html' title='ketos::compile::CompileError'>CompileError</a>&gt;</code></h4>
+<div class='docblock'><p>Write stored jump instruction to buffer, if present.</p>
+</div><h4 id='method.flush' class='method'><code>fn <a href='#method.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../../ketos/compile/enum.CompileError.html' title='ketos::compile::CompileError'>CompileError</a>&gt;</code></h4>
+<div class='docblock'><p>Forcibly encodes a pending instruction.
+Does not encode a jump instruction.</p>
+</div><h4 id='method.push_instruction' class='method'><code>fn <a href='#method.push_instruction' class='fnname'>push_instruction</a>(&amp;mut self, instr: <a class='enum' href='../../ketos/bytecode/enum.Instruction.html' title='ketos::bytecode::Instruction'>Instruction</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../../ketos/compile/enum.CompileError.html' title='ketos::compile::CompileError'>CompileError</a>&gt;</code></h4>
+<div class='docblock'><p>Adds an instruction the block. The instruction may be stored until later
+to be merged into a combination instruction.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../ketos/bytecode/struct.CodeBlock.html' title='ketos::bytecode::CodeBlock'>CodeBlock</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "ketos";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

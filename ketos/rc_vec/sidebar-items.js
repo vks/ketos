@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["RcVec","Represents a reference-counted view into a `Vec`. Subslices may be created which will share the underlying data buffer."]],"trait":[["RangeArgument","Argument for functions accepting a range"]]});
